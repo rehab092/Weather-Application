@@ -1,0 +1,685 @@
+/* General reset and styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Container styling */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)); /* Transparent gradient background */
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.logo img {
+    width: 400px; /* Adjust as needed */
+    height: auto;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+}
+/* Logo styling */
+.sidebar .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #ecf0f1;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+}
+
+/* Navigation styling */
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Individual navigation item styling */
+.sidebar nav ul li {
+    margin-bottom: 30px;
+}
+
+/* Navigation links */
+.sidebar nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1); /* Transparent link background */
+}
+
+/* Hover effect for navigation links */
+.sidebar nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px); /* Slight slide effect */
+    box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for hover */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add depth to text */
+}
+
+/* Active state or focused links */
+.sidebar nav ul li a:active,
+.sidebar nav ul li a:focus {
+    background: rgba(255, 255, 255, 0.4);
+    outline: none;
+    transform: translateX(5px);
+}
+
+/* Additional style for navigation list items */
+.sidebar nav ul li a::before {
+    content: '»'; /* Adding a chevron for a clean design */
+    position: absolute;
+    left: -25px;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Chevron animation on hover */
+.sidebar nav ul li a:hover::before {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+
+/* Main content styling */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styling */
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)); /* Transparent gradient background */
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+header input[type="text"],
+header input[type="number"] {
+    padding: 12px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 240px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: border 0.3s ease;
+}
+
+header input[type="text"]:focus,
+header input[type="number"]:focus {
+    outline: none;
+    border: 1px solid #3498db;
+}
+
+header button {
+    padding: 14px 28px; /* Increased padding for a substantial and luxurious look */
+    background: linear-gradient(145deg, #42a5f5, #1e88e5); /* Richer gradient for a dynamic look */
+    color: #fff;
+    border: none;
+    border-radius: 50px; /* Pill-shaped, fully rounded corners */
+    cursor: pointer;
+    transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(33, 150, 243, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3); /* Deep outer shadow & slight inner shadow */
+    font-weight: 600; /* Slightly bolder text */
+    letter-spacing: 0.7px; /* More spacing for sophistication */
+}
+
+header button:hover {
+    background: linear-gradient(145deg, #5ebbf9, #2286e0); /* Brighter gradient for hover effect */
+    box-shadow: 0 15px 30px rgba(33, 150, 243, 0.5), inset 0 1px 3px rgba(255, 255, 255, 0.4); /* More prominent shadow for hover */
+    transform: translateY(-5px) scale(1.03); /* Subtle lift and scale effect on hover */
+}
+
+header button:active {
+    transform: translateY(2px) scale(0.98); /* Simulate button press on click */
+    box-shadow: 0 7px 14px rgba(33, 150, 243, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.2); /* Slightly reduced shadows on press */
+}
+
+header button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.4); /* Focus ring for accessibility */
+}
+
+
+header button:hover {
+    background-color: #2980b9;
+}
+
+header .form-select {
+    width: 150px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    color: #333;
+    transition: border 0.3s ease;
+}
+
+header .form-select:focus {
+    outline: none;
+    border: 1px solid #3498db;
+}
+/* Adjustments to header inputs for better spacing */
+header .d-flex.flex-wrap.gap-2 {
+    gap: 15px; /* Improved spacing between inputs */
+}
+
+header .d-flex.align-items-center.gap-2 {
+    gap: 15px; /* Improved spacing for dropdown and profile button */
+}
+
+/* Slight adjustments for responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    header .d-flex.flex-wrap.gap-2,
+    header .d-flex.align-items-center.gap-2 {
+        width: 100%;
+    }
+
+    header input,
+    header button,
+    header .form-select,
+    #user-profile {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Toggle units styling */
+.toggle-units label {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+#user-profile {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Weather Data Section */
+#weather-data-container {
+    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)); /* Transparent gradient background */
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+#weather-info {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Charts Section */
+#chart-container {
+    display: flex;
+    justify-content: space-between; /* Space charts evenly */
+    flex-wrap: nowrap; /* Prevent wrapping, keeping all charts in one row */
+    gap: 20px; /* Adds space between the charts */
+    width: 100%; /* Ensures the container takes full width */
+    height: 500px;
+    overflow-x: auto; /* Adds horizontal scroll if charts overflow the available width */
+    padding: 20px 0;
+}
+
+/* Individual Charts */
+#chart-container canvas {
+    flex: 0 0 250px; /* Each chart takes up 250px width */
+    gap: 5px;
+    height: 250px; /* Fixed height for charts */
+    margin: 0 5px; /* Add space around charts */
+    max-width: 30%; /* Ensure maximum width is controlled */
+}
+
+.chart-wrapper {
+    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)); /* Transparent gradient background */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox Content Wrapper */
+.content-wrapper {
+    display: flex;
+    gap: 20px; /* Space between table and chatbot */
+}
+
+/* Weather Section styling */
+#weather-section {
+    flex: 2; /* Takes more space */
+    padding: 20px;
+    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)); /* Transparent gradient background */
+    border-radius: 12px;
+    backdrop-filter: blur(10px); /* Blur effect for a glassy look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a box shadow for depth */
+}
+
+/* Table styling */
+#forecast-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Border with slight transparency */
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden; /* Clip content within rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+}
+
+/* Table header */
+#forecast-table th {
+    background-color: rgba(52, 152, 219, 0.8); /* Gradient header */
+    color: #fff;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Table body */
+#forecast-table td {
+    padding: 12px 15px;
+    font-size: 15px;
+    color: #333;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Table rows hover effect */
+#forecast-table tbody tr:hover {
+    background-color: rgba(52, 152, 219, 0.1); /* Light hover effect */
+    transition: background-color 0.3s ease;
+}
+
+/* Pagination styling */
+#pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#pagination .page-btn {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: none;
+    background: linear-gradient(145deg, #42a5f5, #1e88e5);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#pagination .page-btn:hover {
+    background: linear-gradient(145deg, #5ebbf9, #2286e0);
+    transform: translateY(-2px);
+}
+
+/* Chatbot Section styling */
+#chatbot-section {
+    flex: 1; /* Takes less space */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle transparency */
+    border-radius: 12px;
+    backdrop-filter: blur(10px); /* Glassy look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Depth effect */
+}
+
+/* Chatbot Section styling */
+#chatbot-section {
+    flex: 1; /* Takes less space */
+    padding: 20px;
+    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)); /* Transparent gradient background */
+    border-radius: 12px;
+    backdrop-filter: blur(10px); /* Glassy look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Depth effect */
+}
+
+/* Chatbot container */
+#chatbot {
+    display: flex;
+    flex-direction: column;
+        color: white !important;
+
+    height: 100%;
+}
+
+/* Chat log styling */
+#chat-log {
+    flex-grow: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    
+    overflow-y: auto;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat log messages */
+#chat-log .user-message,
+#chat-log .bot-message {
+    padding: 10px 15px;
+    color: white !important;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+#chat-log .user-message {
+    background: rgba(52, 152, 219, 0.2);
+    align-self: flex-end;
+    color: #fffafa;
+}
+
+#chat-log .bot-message {
+    background: rgba(192, 192, 192, 0.2);
+    align-self: flex-start;
+    color: #333;
+}
+
+/* Chat input styling */
+#chat-input {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: border 0.3s ease;
+}
+
+#chat-input:focus {
+    outline: none;
+    border: 1px solid #3498db;
+}
+
+/* Chat send button */
+#chat-send-btn {
+    padding: 12px 20px;
+    background: linear-gradient(145deg, #42a5f5, #1e88e5);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 6px 12px rgba(33, 150, 243, 0.4);
+}
+
+#chat-send-btn:hover {
+    background: linear-gradient(145deg, #5ebbf9, #2286e0);
+    transform: translateY(-3px);
+}
+
+#chat-send-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.4);
+}
+
+#chat-send-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header input,
+    header button {
+        margin-bottom: 10px;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    #weather-section,
+    #chatbot-section {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+/* Button section styling */
+#button-section {
+    margin-bottom: 20px;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between; /* Ensures buttons are spaced out evenly */
+}
+
+#button-section button {
+    padding: 12px 20px; /* Comfortable padding */
+    background: linear-gradient(145deg, #42a5f5, #1e88e5); /* Smooth gradient for buttons */
+    color: white;
+    border: none;
+    border-radius: 30px; /* Rounded corners for a soft appearance */
+    cursor: pointer;
+    transition: background 0.4s, transform 0.3s, box-shadow 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 6px 12px rgba(33, 150, 243, 0.3); /* Soft shadow for depth */
+    font-weight: 600; /* Slightly bolder text for emphasis */
+    letter-spacing: 0.5px; /* Minor letter spacing for readability */
+    flex: 1; /* Make each button fill its container */
+    margin: 0 10px; /* Add some space between buttons */
+}
+
+/* Hover effect for buttons */
+#button-section button:hover {
+    background: linear-gradient(145deg, #5ebbf9, #2286e0); /* Brighter gradient on hover */
+    box-shadow: 0 8px 16px rgba(33, 150, 243, 0.5); /* More prominent shadow */
+    transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Active and focus state for accessibility */
+#button-section button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.4); /* Focus ring for accessibility */
+}
+
+#button-section button:active {
+    transform: translateY(2px); /* Slight press effect */
+    box-shadow: 0 5px 10px rgba(33, 150, 243, 0.3); /* Reduced shadow on press */
+}
+
+
+/* Styling for the video background */
+#weather-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1; /* Send video to the back */
+    object-fit: cover;
+}
+/* Responsive Design - Sidebar not fixed */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+        box-shadow: none;
+        border-right: none;
+    }
+
+    .main-content {
+        padding: 10px;
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    header input,
+    header button {
+        margin-bottom: 10px;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    #weather-section,
+    #chatbot-section {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; /* Switch to row layout for wider screens */
+    }
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 250px; /* Original width on larger screens */
+        position: static; /* Reset position for larger screens */
+    }
+}
+@media (min-width: 768px) {
+    #chart-container {
+        flex-wrap: nowrap; /* Disable wrapping on larger screens */
+        gap: 20px; /* Restore gap on larger screens */
+    }
+
+    #chart-container canvas {
+        flex: 0 0 250px; /* Restore default chart width */
+        max-width: 30%;
+    }
+}@media (min-width: 768px) {
+    #weather-section {
+        flex: 2; /* Occupy more space */
+    }
+
+    #chatbot-section {
+        flex: 1; /* Occupy less space */
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        flex-direction: row; /* Row layout for larger screens */
+        align-items: center;
+    }
+
+    header input,
+    header button,
+    header .form-select,
+    #user-profile {
+        width: auto; /* Reset width for larger screens */
+    }
+}
+@media (min-width: 768px) {
+    #forecast-table th,
+    #forecast-table td {
+        font-size: 16px; /* Restore default font size */
+        padding: 12px 15px;
+    }
+}
+/* Adjustments for medium-sized screens */
+@media (max-width: 1024px) {
+    #chart-container canvas {
+        flex: 1 1 45%; /* Take nearly half the width */
+        width: 45%; /* Explicit width for medium screens */
+        height: 300px; /* Reduce height slightly */
+    }
+}
+
+/* Adjustments for small-sized screens */
+@media (max-width: 768px) {
+    #chart-container canvas {
+        flex: 1 1 100%; /* Take full width */
+        width: 100%; /* Full width for small screens */
+        height: 250px; /* Adjust height for small screens */
+    }
+}
+
+/* Adjustments for very small-sized screens */
+@media (max-width: 480px) {
+    #chart-container canvas {
+        flex: 1 1 100%; /* Full width */
+        width: 100%; /* Full width for very small screens */
+        height: 200px; /* Further reduce height */
+    }
+}

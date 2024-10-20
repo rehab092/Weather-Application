@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Linking the custom CSS file -->
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- Including Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container-fluid d-flex p-0">
+        <!-- Sidebar for navigation -->
+        <aside class="sidebar d-flex flex-column align-items-center p-3">
+            <div class="logo text-center mb-4">
+                <img src="https://img.freepik.com/free-psd/3d-icon-weather-conditions-with-rain-sun_23-2150108737.jpg?semt=ais_hybrid" alt="Weather App Logo" class="img-fluid" style="max-width: 100px;">
+                <h4 class="mt-2">Breeze Cast</h4>
+            </div>
+            <nav>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-3">
+                        <a href="#" class="nav-link" id="dashboard-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a href="#" class="nav-link" id="tables-link">Tables</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+
+        <video id="weather-video" autoplay muted loop>
+            <source id="video-source" src="deff.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Main content area -->
+        <div class="main-content flex-grow-1 p-4">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section">
+                <header class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+                    <div class="d-flex flex-wrap gap-2">
+                        <input type="text" class="form-control" id="city-input" placeholder="Enter city name">
+                        <input type="number" class="form-control" id="latitude-input" placeholder="Enter latitude">
+                        <input type="number" class="form-control" id="longitude-input" placeholder="Enter longitude">
+                        <button id="get-weather-btn" class="btn btn-primary">Get Weather</button>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="toggle-units">
+                            <select class="form-select" id="unit-select">
+                                <option value="metric" selected>Celsius</option>
+                                <option value="imperial">Fahrenheit</option>
+                            </select>
+                        </div>
+                        <div class="user-profile d-flex align-items-center ms-auto">
+                          
+                            <img src="https://i.pinimg.com/736x/c0/74/9b/c0749b7cc401421662ae901ec8f9f660.jpg" alt="User Profile" class="rounded-circle profile-pic">
+                        </div>
+                    </div>
+                    
+                </header>
+
+                <div id="weather-data-container" class="mb-4">
+                    <div id="weather-info" class="h4"></div>
+                    <div id="weather-description" class="weather-description"></div>
+                </div>
+
+                <section id="chart-container" class="d-flex flex-wrap justify-content-between gap-3">
+                    <canvas id="barChart" class="chart-wrapper"></canvas>
+                    <canvas id="doughnutChart" class="chart-wrapper"></canvas>
+                    <canvas id="lineChart" class="chart-wrapper"></canvas>
+                </section>
+            </section>
+
+            <!-- Table Section -->
+            <section id="table-section" class="d-none">
+                
+            
+                <header class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+                    <div class="d-flex flex-wrap gap-2">
+                        <input type="text" class="form-control" id="city-input" placeholder="Enter city name">
+                        <input type="number" class="form-control" id="latitude-input" placeholder="Enter latitude">
+                        <input type="number" class="form-control" id="longitude-input" placeholder="Enter longitude">
+                        <button id="get-weather-btn" class="btn btn-primary">Get Weather</button>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="toggle-units">
+                            <select class="form-select" id="unit-select">
+                                <option value="metric" selected>Celsius</option>
+                                <option value="imperial">Fahrenheit</option>
+                            </select>
+                        </div>
+                        <div class="user-profile d-flex align-items-center ms-auto">
+                          
+                            <img src="https://i.pinimg.com/736x/c0/74/9b/c0749b7cc401421662ae901ec8f9f660.jpg" alt="User Profile" class="rounded-circle profile-pic">
+                        </div>
+                    </div>
+                </header>
+
+                <div id="weather-data-container">
+                    <div id="weather-info-table"></div>
+                    <div id="weather-description-table" class="weather-description"></div>
+                </div>
+
+                <section id="weather-section">
+                    <table id="forecast-table" class="table table-striped table-bordered mt-4">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Date</th>
+                                <th>Temp</th>
+                                <th>Condition</th>
+                            </tr>
+                        </thead>
+                        <tbody id="forecast-body"></tbody>
+                    </table>
+                    <div id="pagination" class="d-flex justify-content-center"></div>
+                </section>
+
+                <div id="button-section" class="mb-4 d-flex flex-wrap gap-2">
+                    <button id="sort-asc-btn" class="btn btn-primary">Sort Ascending</button>
+                    <button id="sort-desc-btn" class="btn btn-primary">Sort Descending</button>
+                    <button id="filter-rain-btn" class="btn btn-primary">Highlight Days Without Rain</button>
+                    <button id="highest-temp-btn" class="btn btn-primary">Show Highest Temperature</button>
+                </div>
+
+                <!-- Chatbot Section -->
+                <section id="chatbot-section" class="d-flex flex-column">
+                    <div id="chatbot" class="d-flex flex-column h-100">
+                        <div id="chat-log" class="border p-3 rounded mb-3 flex-grow-1"></div>
+                        <input type="text" id="chat-input" class="form-control mb-2" placeholder="Ask me something...">
+                        <button id="chat-send-btn" class="btn btn-primary">Send</button>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <!-- Link to your JavaScript files -->
+    <script src="dashboard.js"></script>
+</body>
+</html>
